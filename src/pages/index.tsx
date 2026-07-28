@@ -9,18 +9,11 @@ import Education from "@/components/Education";
 import Footer from "@/components/Footer";
 import Information from "@/components/Information";
 import Layout from "@/components/Layout";
-import Project from "@/components/Project";
 import ResumeTitle from "@/components/ResumeTitle";
 // import ScrollProgress from "@/components/ScrollProgress";
 import Skills from "@/components/Skills";
 import WorkExperience from "@/components/WorkExperience";
-import {
-  DataProps,
-  InformationProps,
-  ProjectProps,
-  SkillsProps,
-  WorkExperienceProps,
-} from "@/types";
+import { DataProps, InformationProps, SkillsProps, WorkExperienceProps } from "@/types";
 import Award from "@/components/Award";
 
 const Home: NextPage<DataProps> = ({
@@ -28,7 +21,6 @@ const Home: NextPage<DataProps> = ({
   information,
   skills,
   workExperience,
-  project,
   activity,
   education,
   certificate,
@@ -42,7 +34,6 @@ const Home: NextPage<DataProps> = ({
         <Information information={information} />
         <WorkExperience workExperience={workExperience} />
         <Skills skills={skills} />
-        <Project project={project} />
         <Activity activity={activity} />
         <Education education={education} />
         <Certificate certificate={certificate} />
@@ -76,24 +67,17 @@ export const getStaticProps = async () => {
     },
   );
 
-  const projectWithData = objectData.project.map(async (item: ProjectProps) => {
-    return getImgSrc({ section: "project", item: await getMd({ section: "project", item }) });
-  });
-
   return {
     props: {
       ...objectData,
       information: await informationWithData,
       skills: skillsWithData,
       workExperience: await Promise.all(workExperienceWithData),
-      project: await Promise.all(projectWithData),
     },
   };
 };
 
-const getMd = async <
-  T extends InformationProps | ProjectProps | WorkExperienceProps | SkillsProps,
->({
+const getMd = async <T extends InformationProps | WorkExperienceProps | SkillsProps>({
   section,
   item,
 }: {
@@ -116,7 +100,7 @@ const getImgSrc = async ({
   item,
 }: {
   section: string;
-  item: InformationProps | ProjectProps | WorkExperienceProps;
+  item: InformationProps | WorkExperienceProps;
 }) => {
   const imgSrc = `/images/${section}/${"id" in item ? item.id : "profile"}.png`;
   const filePath = path.join(process.cwd(), "public", imgSrc);

@@ -3,6 +3,8 @@ import { DefaultSeo } from "next-seo";
 import { ThemeProvider } from "next-themes";
 import type { AppProps } from "next/app";
 
+import DarkModeToggle from "@/components/DarkModeToggle";
+
 /**
  * @description SEO를 위해 본인의 정보로 수정해주세요.
  */
@@ -50,12 +52,11 @@ const DEFAULT_SEO = {
 
 const App = ({ Component, pageProps }: AppProps) => {
   return (
-    <>
+    <ThemeProvider attribute="class">
       <DefaultSeo {...DEFAULT_SEO} />
-      <ThemeProvider attribute="class">
-        <Component {...pageProps} />
-      </ThemeProvider>
-    </>
+      <DarkModeToggle />
+      <Component {...pageProps} />
+    </ThemeProvider>
   );
 };
 

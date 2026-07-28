@@ -16,99 +16,15 @@
   "workExperience": [
     {
       "id": 0,
-      "name": "(주) 세마리토끼컴퍼니",
-      "position": "Frontend Developer / 인턴",
+      "name": "세마리토끼컴퍼니",
+      "position": "Frontend Developer",
       "period": ["2022. 07", "2022. 12"]
     },
     {
       "id": 1,
-      "name": "(주) 스패로우",
-      "position": "Frontend Developer / 정규직",
+      "name": "스패로우",
+      "position": "Frontend Developer",
       "period": ["2023. 03", "재직 중"]
-    }
-  ],
-
-  "project": [
-    {
-      "id": 0,
-      "name": "방구석연구소 프로젝트",
-      "description": "다양한 디바이스에서 서비스되는 심리테스트/웹게임을 개발 및 퍼블리싱했습니다.\n17개의 프로젝트를 완성했고, 프로젝트당 평균 13만명의 이용자를 기록했습니다.",
-      "isTeam": true,
-      "period": ["2022. 07", "2022. 12"],
-      "stack": ["JavaScript", "React", "CSS3", "HTML5"]
-    },
-    {
-      "id": 1,
-      "name": "2022 밈어워즈",
-      "description": "2022년 한 해 동안 유행했던 밈 중 최고의 밈을 선정하는 투표 페이지입니다.",
-      "isTeam": true,
-      "period": ["2022. 11", "2022. 12"],
-      "stack": ["JavaScript", "React", "styled-components", "Firebase", "HTML5"]
-    },
-    {
-      "id": 2,
-      "name": "스패로우 엔터프라이즈 개발",
-      "description": "DevSecOps 구축을 도와주는 웹 기반 Application을 개발합니다. (상시 업무)\n소프트웨어 품질/보안 검증 제품의 프론트엔드 전반을 담당하고 있습니다.",
-      "isTeam": true,
-      "period": ["2023. 03", "now"],
-      "stack": [
-        "TypeScript",
-        "React",
-        "Next",
-        "React-Query",
-        "GraphQL",
-        "Emotion.js",
-        "Storybook",
-        "Cursor Agent"
-      ]
-    },
-    {
-      "id": 3,
-      "name": "디자인시스템 운영",
-      "description": "Atomic design 구조의 디자인시스템을 구축하고 운영합니다.\nStorybook 기반으로 컴포넌트를 문서화하고, 시각적 회귀 테스트로 안정성을 확보했습니다.",
-      "isTeam": true,
-      "period": ["2023. 06", "now"],
-      "stack": [
-        "TypeScript",
-        "React",
-        "Next",
-        "Storybook",
-        "BackstopJS",
-        "Emotion.js",
-        "TailwindCSS"
-      ]
-    },
-    {
-      "id": 4,
-      "name": "E2E 테스트 구축 및 자동화",
-      "description": "Playwright로 모든 서비스 사용 시나리오의 E2E 테스트 자동화 파이프라인을 구축했습니다.\n220개의 테스트 코드를 작성 및 유지보수하며 수동 전수 테스트 시간을 75% 단축했습니다.",
-      "isTeam": true,
-      "period": ["2024. 01", "now"],
-      "stack": ["Playwright", "Docker", "gitlab-runner", "React", "Cursor Agent"]
-    },
-    {
-      "id": 5,
-      "name": "Emotion → Tailwind 마이그레이션",
-      "description": "디자인시스템의 CSS 라이브러리를 Emotion에서 Tailwind로 마이그레이션했습니다.\nAgent Teams 파이프라인을 구성해 한 달 분량의 작업을 2주 만에 완료했습니다.",
-      "isTeam": true,
-      "period": ["2025. 03", "2025. 04"],
-      "stack": [
-        "TypeScript",
-        "React",
-        "TailwindCSS",
-        "Emotion.js",
-        "Storybook",
-        "BackstopJS",
-        "Cursor Agent"
-      ]
-    },
-    {
-      "id": 6,
-      "name": "app router로의 마이그레이션",
-      "description": "page router로 구현된 제품을 app router로 부분 마이그레이션했습니다.\nRSC와 클라이언트 컴포넌트의 경계를 설계하고 서버 prefetch 구조를 도입해 초기 로딩 속도(FCP)를 60% 개선했습니다.",
-      "isTeam": true,
-      "period": ["2025. 05", "now"],
-      "stack": ["TypeScript", "Next", "RSC", "React-Query", "TailwindCSS", "Cursor Agent"]
     }
   ],
 

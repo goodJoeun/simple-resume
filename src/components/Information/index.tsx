@@ -30,7 +30,7 @@ const Information = ({ information }: Pick<DataProps, "information">) => {
             {information.contact.map((contact) => (
               <ContactItem
                 key={contact.id}
-                className="text-BLACK hover:text-PRIMARY_HEAVY dark:hover:text-PRIMARY_HEAVY"
+                className="text-BLACK dark:text-white hover:text-PRIMARY_HEAVY dark:hover:text-PRIMARY_HEAVY"
                 {...contact}
               >
                 {contact.name}

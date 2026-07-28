@@ -45,11 +45,11 @@
   }
 
   code {
-    @apply bg-GRAY_LIGHT dark:bg-GRAY_EXTRAHEAVY  py-[2px] px-1.5 rounded-md text-xs font-medium text-PRIMARY_HEAVY dark:text-PRIMARY;
+    @apply bg-GRAY_LIGHT py-[2px] px-1.5 rounded-md text-xs font-medium text-PRIMARY_HEAVY dark:text-PRIMARY;
   }
 
   blockquote {
-    @apply bg-GRAY_LIGHT py-4 px-6 my-2 rounded-md w-full dark:bg-GRAY_EXTRAHEAVY;
+    @apply bg-GRAY_LIGHT dark:bg-GRAY_EXTRAHEAVY py-4 px-6 my-2 rounded-md w-full;
   }
 
   ul,

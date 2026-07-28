@@ -19,19 +19,6 @@ export interface WorkExperienceProps {
   imgSrc?: string;
 }
 
-export interface ProjectProps {
-  id: number;
-  name: string;
-  description: string;
-  repoUrl?: string;
-  webUrl?: string;
-  isTeam?: boolean;
-  period: string[];
-  stack: string[];
-  markdown?: string;
-  imgSrc?: string;
-}
-
 export interface AwardProps {
   id: number;
   name: string;
@@ -47,7 +34,6 @@ export interface DataProps {
   information: InformationProps;
   skills: SkillsProps;
   workExperience: WorkExperienceProps[];
-  project: ProjectProps[];
   activity: {
     id: number;
     name: string;

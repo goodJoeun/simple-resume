@@ -8,7 +8,7 @@ const Footer = ({
   name: string;
 }) => {
   return (
-    <footer className="flex flex-col gap-2 justify-center items-center bg-GRAY h-28 text-xs text-white dark:bg-GRAY_EXTRAHEAVY dark:text-GRAY_HEAVY">
+    <footer className="flex flex-col gap-2 justify-center items-center bg-GRAY h-28 text-xs text-white">
       <div className="flex gap-1">
         {contact.map((contact) => (
           <ContactItem key={contact.id} {...contact}>
