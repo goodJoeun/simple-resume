@@ -5,6 +5,10 @@ export interface InformationProps {
   imgSrc?: string;
 }
 
+export interface SkillsProps {
+  markdown?: string;
+}
+
 export interface WorkExperienceProps {
   id: number;
   name: string;
@@ -19,7 +23,7 @@ export interface ProjectProps {
   id: number;
   name: string;
   description: string;
-  repoUrl: string;
+  repoUrl?: string;
   webUrl?: string;
   isTeam?: boolean;
   period: string[];
@@ -41,6 +45,7 @@ export interface DataProps {
     title: string;
   };
   information: InformationProps;
+  skills: SkillsProps;
   workExperience: WorkExperienceProps[];
   project: ProjectProps[];
   activity: {

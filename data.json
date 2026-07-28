@@ -1,107 +1,136 @@
 {
   "resumeTitle": {
-    "title": "Hong Gil Dong"
+    "title": "Jo Eun"
   },
 
   "information": {
-    "name": "홍길동",
+    "name": "조은",
     "contact": [
-      { "id": 0, "name": "Email", "href": "honggildong@gmail.com", "isEmail": true },
-      { "id": 1, "name": "Github", "href": "https://github.com/honggildong" },
-      { "id": 2, "name": "Blog", "href": "https://velog.io/@honggildong" }
+      { "id": 0, "name": "Email", "href": "euny_sky11@naver.com", "isEmail": true },
+      { "id": 1, "name": "Blog", "href": "https://velog.io/@josuncom" }
     ]
   },
+
+  "skills": {},
 
   "workExperience": [
     {
       "id": 0,
-      "name": "커피프린스 1호점",
-      "position": "Front-end Engineer",
-      "period": ["2019. 01", "2019. 09"]
+      "name": "(주) 세마리토끼컴퍼니",
+      "position": "Frontend Developer / 인턴",
+      "period": ["2022. 07", "2022. 12"]
     },
     {
       "id": 1,
-      "name": "커피프린스 2호점",
-      "position": "바리스타",
-      "period": ["2022. 01", "now"]
+      "name": "(주) 스패로우",
+      "position": "Frontend Developer / 정규직",
+      "period": ["2023. 03", "재직 중"]
     }
   ],
 
   "project": [
     {
       "id": 0,
-      "name": "첫번째 팀 프로젝트",
-      "description": "프로젝트에 대한 간단한 설명을 적을 수 있습니다. 어떤 프로젝트인지 주제나 강조하고 싶은 부분을 적어보세요.",
-      "webUrl": "https://github.com/sjoleee/",
-      "repoUrl": "https://github.com/sjoleee/",
+      "name": "방구석연구소 프로젝트",
+      "description": "다양한 디바이스에서 서비스되는 심리테스트/웹게임을 개발 및 퍼블리싱했습니다.\n17개의 프로젝트를 완성했고, 프로젝트당 평균 13만명의 이용자를 기록했습니다.",
       "isTeam": true,
-      "period": ["2022. 07", "2022. 09"],
-      "stack": ["사용한 기술을 적어주세요", "React.js", "JavaScript", "styled-components", "Recoil"]
+      "period": ["2022. 07", "2022. 12"],
+      "stack": ["JavaScript", "React", "CSS3", "HTML5"]
     },
     {
       "id": 1,
-      "name": "첫번째 개인 프로젝트",
-      "description": "프로젝트에 대한 간단한 설명을 적을 수 있습니다. 어떤 프로젝트인지 주제나 강조하고 싶은 부분을 적어보세요.",
-      "webUrl": "https://github.com/sjoleee/",
-      "repoUrl": "https://github.com/sjoleee/",
-      "isTeam": false,
-      "period": ["2022. 10", "2022. 11"],
-      "stack": ["JavaScript", "HTML/CSS"]
+      "name": "2022 밈어워즈",
+      "description": "2022년 한 해 동안 유행했던 밈 중 최고의 밈을 선정하는 투표 페이지입니다.",
+      "isTeam": true,
+      "period": ["2022. 11", "2022. 12"],
+      "stack": ["JavaScript", "React", "styled-components", "Firebase", "HTML5"]
+    },
+    {
+      "id": 2,
+      "name": "스패로우 엔터프라이즈 개발",
+      "description": "DevSecOps 구축을 도와주는 웹 기반 Application을 개발합니다. (상시 업무)\n소프트웨어 품질/보안 검증 제품의 프론트엔드 전반을 담당하고 있습니다.",
+      "isTeam": true,
+      "period": ["2023. 03", "now"],
+      "stack": [
+        "TypeScript",
+        "React",
+        "Next",
+        "React-Query",
+        "GraphQL",
+        "Emotion.js",
+        "Storybook",
+        "Cursor Agent"
+      ]
+    },
+    {
+      "id": 3,
+      "name": "디자인시스템 운영",
+      "description": "Atomic design 구조의 디자인시스템을 구축하고 운영합니다.\nStorybook 기반으로 컴포넌트를 문서화하고, 시각적 회귀 테스트로 안정성을 확보했습니다.",
+      "isTeam": true,
+      "period": ["2023. 06", "now"],
+      "stack": [
+        "TypeScript",
+        "React",
+        "Next",
+        "Storybook",
+        "BackstopJS",
+        "Emotion.js",
+        "TailwindCSS"
+      ]
+    },
+    {
+      "id": 4,
+      "name": "E2E 테스트 구축 및 자동화",
+      "description": "Playwright로 모든 서비스 사용 시나리오의 E2E 테스트 자동화 파이프라인을 구축했습니다.\n220개의 테스트 코드를 작성 및 유지보수하며 수동 전수 테스트 시간을 75% 단축했습니다.",
+      "isTeam": true,
+      "period": ["2024. 01", "now"],
+      "stack": ["Playwright", "Docker", "gitlab-runner", "React", "Cursor Agent"]
+    },
+    {
+      "id": 5,
+      "name": "Emotion → Tailwind 마이그레이션",
+      "description": "디자인시스템의 CSS 라이브러리를 Emotion에서 Tailwind로 마이그레이션했습니다.\nAgent Teams 파이프라인을 구성해 한 달 분량의 작업을 2주 만에 완료했습니다.",
+      "isTeam": true,
+      "period": ["2025. 03", "2025. 04"],
+      "stack": [
+        "TypeScript",
+        "React",
+        "TailwindCSS",
+        "Emotion.js",
+        "Storybook",
+        "BackstopJS",
+        "Cursor Agent"
+      ]
+    },
+    {
+      "id": 6,
+      "name": "app router로의 마이그레이션",
+      "description": "page router로 구현된 제품을 app router로 부분 마이그레이션했습니다.\nRSC와 클라이언트 컴포넌트의 경계를 설계하고 서버 prefetch 구조를 도입해 초기 로딩 속도(FCP)를 60% 개선했습니다.",
+      "isTeam": true,
+      "period": ["2025. 05", "now"],
+      "stack": ["TypeScript", "Next", "RSC", "React-Query", "TailwindCSS", "Cursor Agent"]
     }
   ],
 
   "activity": [
     {
       "id": 0,
-      "name": "첫번째 활동",
-      "period": ["2022. 06", "2022. 08"],
-      "description": "첫번째 활동에 대한 간략한 설명"
-    },
-    {
-      "id": 1,
-      "name": "두번째 활동",
-      "period": ["2022. 06", "2022. 08"],
-      "description": "두번째 활동에 대한 간략한 설명"
+      "name": "2023 오픈소스 컨트리뷰션 아카데미",
+      "period": ["2023. 07", "2023. 12"],
+      "description": "오픈소스 프로젝트인 Githru 프로젝트에 참여했습니다.\nhttps://github.com/githru/githru-boot/issues/51"
     }
   ],
 
   "education": [
     {
       "id": 0,
-      "name": "첫번째 교육",
-      "period": ["2013. 02", "2020. 02"],
-      "description": "첫번째 교육에 대한 간략한 설명"
-    },
-    {
-      "id": 1,
-      "name": "두번째 교육",
-      "period": ["2013. 02", "2020. 02"],
-      "description": "두번째 교육에 대한 간략한 설명"
+      "name": "건국대학교",
+      "period": ["2017. 03", "2023. 02"],
+      "description": "스마트ICT융합공학과 학사 졸업"
     }
   ],
 
-  "certificate": [
-    {
-      "id": 0,
-      "name": "TOEIC 1000점",
-      "date": "2019. 07. 28",
-      "organizer": "ETS"
-    },
-    {
-      "id": 1,
-      "name": "OPIC IH",
-      "date": "2019. 07. 28",
-      "organizer": "ETS"
-    }
-  ],
+  "certificate": [],
 
-  "award": [
-    {
-      "id": 0,
-      "name": "첫번째 수상",
-      "date": "2019. 07. 28",
-      "organizer": "수여기관",
-      "description": "첫번째 수상에 대한 간략한 설명"
-    }
-  ]
+  "award": []
 }

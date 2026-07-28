@@ -12,13 +12,21 @@ import Layout from "@/components/Layout";
 import Project from "@/components/Project";
 import ResumeTitle from "@/components/ResumeTitle";
 // import ScrollProgress from "@/components/ScrollProgress";
+import Skills from "@/components/Skills";
 import WorkExperience from "@/components/WorkExperience";
-import { DataProps, InformationProps, ProjectProps, WorkExperienceProps } from "@/types";
+import {
+  DataProps,
+  InformationProps,
+  ProjectProps,
+  SkillsProps,
+  WorkExperienceProps,
+} from "@/types";
 import Award from "@/components/Award";
 
 const Home: NextPage<DataProps> = ({
   resumeTitle,
   information,
+  skills,
   workExperience,
   project,
   activity,
@@ -33,6 +41,7 @@ const Home: NextPage<DataProps> = ({
       <Layout>
         <Information information={information} />
         <WorkExperience workExperience={workExperience} />
+        <Skills skills={skills} />
         <Project project={project} />
         <Activity activity={activity} />
         <Education education={education} />
@@ -56,6 +65,8 @@ export const getStaticProps = async () => {
     item: await getMd({ section: "information", item: { ...objectData.information } }),
   });
 
+  const skillsWithData = await getMd({ section: "skills", item: { ...objectData.skills } });
+
   const workExperienceWithData = objectData.workExperience.map(
     async (item: WorkExperienceProps) => {
       return getImgSrc({
@@ -73,18 +84,21 @@ export const getStaticProps = async () => {
     props: {
       ...objectData,
       information: await informationWithData,
+      skills: skillsWithData,
       workExperience: await Promise.all(workExperienceWithData),
       project: await Promise.all(projectWithData),
     },
   };
 };
 
-const getMd = async ({
+const getMd = async <
+  T extends InformationProps | ProjectProps | WorkExperienceProps | SkillsProps,
+>({
   section,
   item,
 }: {
   section: string;
-  item: InformationProps | ProjectProps | WorkExperienceProps;
+  item: T;
 }) => {
   try {
     const markdownModule = await import(

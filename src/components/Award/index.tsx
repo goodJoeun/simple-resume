@@ -4,6 +4,8 @@ import AwardItem from "./AwardItem";
 import { DataProps } from "@/types";
 
 const Award = ({ award }: Pick<DataProps, "award">) => {
+  if (award.length === 0) return null;
+
   return (
     <div>
       <SectionTitle>Award</SectionTitle>

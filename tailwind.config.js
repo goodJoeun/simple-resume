@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
 
-// const { fontFamily } = require("tailwindcss/defaultTheme");
+const { fontFamily } = require("tailwindcss/defaultTheme");
 /** @type {import('tailwindcss').Config} */
 
 module.exports = {
@@ -8,6 +8,9 @@ module.exports = {
   darkMode: "class",
   theme: {
     extend: {
+      fontFamily: {
+        sans: ["Pretendard Variable", "Pretendard", ...fontFamily.sans],
+      },
       // NOTE: 본 템플릿은 대부분이 모노톤으로 이루어져 있습니다. primary 컬러만 수정하여 사용하시는 것을 권장드립니다.
       colors: {
         GRAY_LIGHT: "#f1f3f5",
@@ -18,27 +21,27 @@ module.exports = {
         /**
          * @description selection(드래그 블록)에 사용되는 컬러입니다.
          */
-        PRIMARY_LIGHT: "#c3fae8",
+        PRIMARY_LIGHT: "#d0ebff",
 
         /**
          * @description 자기소개의 이름 부분, code tag의 darkmode에 사용되는 컬러입니다.
          */
-        PRIMARY: "#12b886",
+        PRIMARY: "#228be6",
 
         /**
          * @description code tag, link hover icon에 사용되는 컬러입니다.
          */
-        PRIMARY_HEAVY: "#087f5b",
+        PRIMARY_HEAVY: "#1864ab",
 
         /**
          * @description 페이지 최상단 gradient의 시작 컬러입니다.
          */
-        GRADIENT_FROM: "#51cf66",
+        GRADIENT_FROM: "#22b8cf",
 
         /**
          * @description 페이지 최상단 gradient의 종료 컬러입니다.
          */
-        GRADIENT_TO: "#0c8599",
+        GRADIENT_TO: "#3b5bdb",
       },
     },
   },

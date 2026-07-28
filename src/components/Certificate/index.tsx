@@ -4,6 +4,8 @@ import CertificateItem from "./CertificateItem";
 import { DataProps } from "@/types";
 
 const Certificate = ({ certificate }: Pick<DataProps, "certificate">) => {
+  if (certificate.length === 0) return null;
+
   return (
     <div>
       <SectionTitle>Certificates</SectionTitle>
