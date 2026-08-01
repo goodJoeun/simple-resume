@@ -52,6 +52,19 @@
     @apply bg-GRAY_LIGHT dark:bg-GRAY_EXTRAHEAVY py-4 px-6 my-2 rounded-md w-full;
   }
 
+  .markdown hr {
+    @apply border-GRAY_LIGHT dark:border-GRAY_EXTRAHEAVY my-6;
+  }
+
+  .markdown table {
+    @apply w-full text-sm my-2;
+  }
+
+  .markdown th,
+  .markdown td {
+    @apply border border-GRAY_LIGHT dark:border-GRAY_EXTRAHEAVY px-3 py-2 text-left;
+  }
+
   ul,
   ol {
     @apply flex flex-col gap-2 py-2 ml-4 list-outside list-disc;

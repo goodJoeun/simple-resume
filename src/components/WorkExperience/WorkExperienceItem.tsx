@@ -2,7 +2,27 @@ import Image from "next/image";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 
+import CodeBlockPopup from "../CodeBlockPopup";
+
 import { WorkExperienceProps } from "@/types";
+
+const markdownComponents = {
+  pre: ({ children }: { children?: React.ReactNode }) => <>{children}</>,
+  code: ({
+    inline,
+    className,
+    children,
+  }: {
+    inline?: boolean;
+    className?: string;
+    children?: React.ReactNode;
+  }) => {
+    if (inline) return <code className={className}>{children}</code>;
+
+    const language = /language-(\w+)/.exec(className ?? "")?.[1];
+    return <CodeBlockPopup code={String(children).replace(/\n$/, "")} language={language} />;
+  },
+};
 
 const WorkExperienceItem = ({ name, position, period, markdown, imgSrc }: WorkExperienceProps) => {
   return (
@@ -26,7 +46,9 @@ const WorkExperienceItem = ({ name, position, period, markdown, imgSrc }: WorkEx
         </div>
       </div>
       <div className="md:border-GRAY_LIGHT md:border-solid md:border-l-[1px] md:pl-4 markdown w-full [&_h4:nth-of-type(n+2)]:mt-4">
-        <ReactMarkdown remarkPlugins={[remarkGfm]}>{markdown ?? ""}</ReactMarkdown>
+        <ReactMarkdown remarkPlugins={[remarkGfm]} components={markdownComponents}>
+          {markdown ?? ""}
+        </ReactMarkdown>
       </div>
     </div>
   );
