@@ -5,7 +5,6 @@ import DarkModeToggle from "./DarkModeToggle";
 const NAV_ITEMS = [
   { id: "strength", label: "Strengths" },
   { id: "experience", label: "Experience" },
-  { id: "skills", label: "Skills" },
   { id: "activities", label: "Activities" },
   { id: "education", label: "Education" },
 ];

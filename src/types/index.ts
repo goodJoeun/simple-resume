@@ -11,10 +11,6 @@ export interface StrengthProps {
   description: string[];
 }
 
-export interface SkillsProps {
-  markdown?: string;
-}
-
 export interface WorkExperienceProps {
   id: number;
   name: string;
@@ -39,7 +35,6 @@ export interface DataProps {
   };
   information: InformationProps;
   strength: StrengthProps[];
-  skills: SkillsProps;
   workExperience: WorkExperienceProps[];
   activity: {
     id: number;

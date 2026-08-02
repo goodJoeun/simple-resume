@@ -12,17 +12,15 @@ import Layout from "@/components/Layout";
 import Nav from "@/components/Nav";
 import ResumeTitle from "@/components/ResumeTitle";
 // import ScrollProgress from "@/components/ScrollProgress";
-import Skills from "@/components/Skills";
 import Strength from "@/components/Strength";
 import WorkExperience from "@/components/WorkExperience";
-import { DataProps, InformationProps, SkillsProps, WorkExperienceProps } from "@/types";
+import { DataProps, InformationProps, WorkExperienceProps } from "@/types";
 import Award from "@/components/Award";
 
 const Home: NextPage<DataProps> = ({
   resumeTitle,
   information,
   strength,
-  skills,
   workExperience,
   activity,
   education,
@@ -38,7 +36,6 @@ const Home: NextPage<DataProps> = ({
         <Information information={information} />
         <Strength strength={strength} />
         <WorkExperience workExperience={workExperience} />
-        <Skills skills={skills} />
         <Activity activity={activity} />
         <Education education={education} />
         <Certificate certificate={certificate} />
@@ -61,8 +58,6 @@ export const getStaticProps = async () => {
     item: await getMd({ section: "information", item: { ...objectData.information } }),
   });
 
-  const skillsWithData = await getMd({ section: "skills", item: { ...objectData.skills } });
-
   const workExperienceWithData = objectData.workExperience.map(
     async (item: WorkExperienceProps) => {
       return getImgSrc({
@@ -76,13 +71,12 @@ export const getStaticProps = async () => {
     props: {
       ...objectData,
       information: await informationWithData,
-      skills: skillsWithData,
       workExperience: await Promise.all(workExperienceWithData),
     },
   };
 };
 
-const getMd = async <T extends InformationProps | WorkExperienceProps | SkillsProps>({
+const getMd = async <T extends InformationProps | WorkExperienceProps>({
   section,
   item,
 }: {
