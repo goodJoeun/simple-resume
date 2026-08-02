@@ -65,6 +65,15 @@
     @apply border border-GRAY_LIGHT dark:border-GRAY_EXTRAHEAVY px-3 py-2 text-left;
   }
 
+  /* 기술 스택 아이콘은 브랜드 컬러를 쓰되, 검정 계열(Next.js 등)은 다크 모드에서 흰색으로 대체합니다. */
+  .tech-icon {
+    color: var(--tech-icon);
+  }
+
+  .dark .tech-icon {
+    color: var(--tech-icon-dark);
+  }
+
   ul,
   ol {
     @apply flex flex-col gap-2 py-2 ml-4 list-outside list-disc;

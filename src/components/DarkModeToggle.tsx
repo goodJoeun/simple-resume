@@ -9,7 +9,8 @@ const DarkModeToggle = () => {
     setMounted(true);
   }, []);
 
-  if (!mounted) return null;
+  // 테마를 알기 전에는 자리만 잡아둬, 마운트 직후 레이아웃이 밀리지 않도록 합니다.
+  if (!mounted) return <span aria-hidden className="w-9 h-9 shrink-0" />;
 
   const isDark = resolvedTheme === "dark";
 
@@ -18,7 +19,7 @@ const DarkModeToggle = () => {
       type="button"
       aria-label={isDark ? "라이트 모드로 전환" : "다크 모드로 전환"}
       onClick={() => setTheme(isDark ? "light" : "dark")}
-      className="fixed top-4 right-4 z-50 flex items-center justify-center w-10 h-10 rounded-full border-[1px] border-GRAY_LIGHT dark:border-GRAY_EXTRAHEAVY bg-white dark:bg-BLACK text-BLACK dark:text-white hover:text-PRIMARY_HEAVY dark:hover:text-PRIMARY transition-colors"
+      className="flex shrink-0 items-center justify-center w-9 h-9 rounded-full border-[1px] border-GRAY_LIGHT dark:border-GRAY_EXTRAHEAVY border-solid text-BLACK dark:text-white hover:text-PRIMARY_HEAVY dark:hover:text-PRIMARY transition-colors"
     >
       {isDark ? (
         <svg

@@ -5,7 +5,7 @@ import { DataProps } from "@/types";
 
 const Education = ({ education }: Pick<DataProps, "education">) => {
   return (
-    <div>
+    <div id="education" className="scroll-mt-24">
       <SectionTitle>Education</SectionTitle>
       <div className="flex flex-col gap-24">
         {[...education].reverse().map((education) => (

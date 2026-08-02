@@ -5,6 +5,12 @@ export interface InformationProps {
   imgSrc?: string;
 }
 
+export interface StrengthProps {
+  id: number;
+  title: string;
+  description: string[];
+}
+
 export interface SkillsProps {
   markdown?: string;
 }
@@ -32,6 +38,7 @@ export interface DataProps {
     title: string;
   };
   information: InformationProps;
+  strength: StrengthProps[];
   skills: SkillsProps;
   workExperience: WorkExperienceProps[];
   activity: {

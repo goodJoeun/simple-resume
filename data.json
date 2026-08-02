@@ -11,6 +11,33 @@
     ]
   },
 
+  "strength": [
+    {
+      "id": 0,
+      "title": "유지보수 가능한 구조를 설계합니다",
+      "description": [
+        "• Storybook 기반 아토믹 디자인 시스템을 구축·운영하고, Emotion → Tailwind 마이그레이션과 Page Router → App Router 전환을 주도했습니다.",
+        "• RSC 경계 설계와 서버 prefetch 구조 도입으로 초기 로딩 속도(FCP)를 60% 개선했습니다."
+      ]
+    },
+    {
+      "id": 1,
+      "title": "테스트 자동화로 품질을 확보합니다",
+      "description": [
+        "• Playwright로 E2E 테스트 파이프라인을 구축해 220개의 테스트를 유지보수하며 수동 전수 테스트 시간을 75% 단축했습니다.",
+        "• BackstopJS 시각 회귀 테스트를 CI에 연동해 500여 개의 Storybook story를 자동 검증합니다."
+      ]
+    },
+    {
+      "id": 2,
+      "title": "AI를 팀의 생산성으로 연결합니다",
+      "description": [
+        "• MCP 서버를 직접 설계·운영해 각 기능 담당자가 AI의 도움으로 테스트 코드를 작성할 수 있는 환경을 만들었습니다.",
+        "• Agent Teams 파이프라인을 구성해 한 달 분량의 마이그레이션 작업을 2주 만에 완료했습니다."
+      ]
+    }
+  ],
+
   "skills": {},
 
   "workExperience": [

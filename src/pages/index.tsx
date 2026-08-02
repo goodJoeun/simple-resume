@@ -9,9 +9,11 @@ import Education from "@/components/Education";
 import Footer from "@/components/Footer";
 import Information from "@/components/Information";
 import Layout from "@/components/Layout";
+import Nav from "@/components/Nav";
 import ResumeTitle from "@/components/ResumeTitle";
 // import ScrollProgress from "@/components/ScrollProgress";
 import Skills from "@/components/Skills";
+import Strength from "@/components/Strength";
 import WorkExperience from "@/components/WorkExperience";
 import { DataProps, InformationProps, SkillsProps, WorkExperienceProps } from "@/types";
 import Award from "@/components/Award";
@@ -19,6 +21,7 @@ import Award from "@/components/Award";
 const Home: NextPage<DataProps> = ({
   resumeTitle,
   information,
+  strength,
   skills,
   workExperience,
   activity,
@@ -30,8 +33,10 @@ const Home: NextPage<DataProps> = ({
     <>
       {/* <ScrollProgress /> */}
       <ResumeTitle resumeTitle={resumeTitle} />
+      <Nav />
       <Layout>
         <Information information={information} />
+        <Strength strength={strength} />
         <WorkExperience workExperience={workExperience} />
         <Skills skills={skills} />
         <Activity activity={activity} />
