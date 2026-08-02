@@ -116,11 +116,11 @@ const WorkExperienceItem = ({ name, position, period, markdown, imgSrc }: WorkEx
             {projects.map((project, index) => (
               <div
                 key={`${index}-${project.title}`}
-                className={
+                className={`reveal ${
                   index > 0
                     ? "mt-10 pt-10 border-t-[1px] border-GRAY_LIGHT dark:border-GRAY_EXTRAHEAVY border-solid"
                     : ""
-                }
+                }`}
               >
                 <MarkdownBody markdown={`### ${project.title}\n\n${project.body}`} />
                 {project.features.length > 0 && (
@@ -139,7 +139,7 @@ const WorkExperienceItem = ({ name, position, period, markdown, imgSrc }: WorkEx
 
         {/* `###` 없이 `####`만 있는 경우: 기존처럼 1단 아코디언 목록으로 표시합니다. */}
         {flat && flat.sections.length > 0 && (
-          <div className={intro ? "mt-6" : ""}>
+          <div className={`reveal ${intro ? "mt-6" : ""}`}>
             {flat.sections.map((section, index) => (
               <Accordion key={`${index}-${section.title}`} title={section.title}>
                 <MarkdownBody markdown={section.body} />

@@ -9,7 +9,9 @@ const Education = ({ education }: Pick<DataProps, "education">) => {
       <SectionTitle>Education</SectionTitle>
       <div className="flex flex-col gap-24">
         {[...education].reverse().map((education) => (
-          <EducationItem key={education.id} {...education} />
+          <div key={education.id} className="reveal">
+            <EducationItem {...education} />
+          </div>
         ))}
       </div>
     </div>

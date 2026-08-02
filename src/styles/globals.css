@@ -83,3 +83,42 @@
     @apply pt-2;
   }
 }
+
+/**
+ * 스크롤로 요소가 뷰포트에 들어올 때 스르륵 나타나는 효과입니다.
+ * JS 없이 CSS scroll-driven animation(animation-timeline: view())만 사용하므로
+ * 메인 스레드를 점유하지 않습니다.
+ *
+ * @supports 로 감싸서 미지원 브라우저(현재 Firefox 등)에서는 애니메이션 없이
+ * 콘텐츠가 그냥 보이도록 합니다. 감싸지 않으면 opacity: 0 인 채로 남아 콘텐츠가 사라집니다.
+ */
+@keyframes reveal {
+  from {
+    opacity: 0;
+    transform: translateY(1.25rem);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  @supports (animation-timeline: view()) {
+    .reveal {
+      animation: reveal linear both;
+      animation-timeline: view();
+      /* 구간을 퍼센트가 아닌 절대 길이로 잡아, 섹션이 길어도 등장 속도가 일정합니다. */
+      animation-range: entry 0% entry 220px;
+    }
+
+    /* 나란히 놓인 카드들은 조금씩 시차를 두고 등장시킵니다. */
+    .reveal-stagger > *:nth-child(2) {
+      animation-range: entry 70px entry 290px;
+    }
+
+    .reveal-stagger > *:nth-child(3) {
+      animation-range: entry 140px entry 360px;
+    }
+  }
+}
