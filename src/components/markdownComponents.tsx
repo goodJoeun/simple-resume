@@ -1,4 +1,4 @@
-import CodeBlockPopup from "./CodeBlockPopup";
+import CodeBlock from "./CodeBlock";
 import TechStack from "./TechStack";
 
 interface MarkdownNode {
@@ -49,7 +49,7 @@ const getTechStackItems = (value: unknown): string[] | null => {
 };
 
 const markdownComponents = {
-  // 코드 블록은 CodeBlockPopup 이 자체 컨테이너를 그리므로 기본 <pre> 를 벗겨냅니다.
+  // 코드 블록은 CodeBlock 이 자체 컨테이너를 그리므로 기본 <pre> 를 벗겨냅니다.
   pre: ({ children }: { children?: React.ReactNode }) => <>{children}</>,
 
   code: ({
@@ -64,7 +64,7 @@ const markdownComponents = {
     if (inline) return <code className={className}>{children}</code>;
 
     const language = /language-(\w+)/.exec(className ?? "")?.[1];
-    return <CodeBlockPopup code={String(children).replace(/\n$/, "")} language={language} />;
+    return <CodeBlock code={String(children).replace(/\n$/, "")} language={language} />;
   },
 
   p: ({ node, children }: { node?: unknown; children?: React.ReactNode }) => {

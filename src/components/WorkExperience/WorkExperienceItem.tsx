@@ -84,6 +84,76 @@ const MarkdownBody = ({ markdown }: { markdown: string }) => (
   </ReactMarkdown>
 );
 
+/** `**소제목** — 설명` 또는 `**소제목**` 한 줄. 뒤에 다른 말이 붙으면(`**A**도 ~`) 강조일 뿐이므로 제외합니다. */
+const STEP_LEAD = /^\*\*(.+?)\*\*(?:\s+—\s*(.*))?$/;
+
+/** `**2026.02 – 2026.03**` 같은 기간 표기는 단위 제목이 아니라 `####` 섹션의 머리말입니다. */
+const isPeriod = (title: string) => /^\d{4}\.\d{2}/.test(title);
+
+/**
+ * @description 한 기능 안에서 `**소제목** — 설명` 으로 시작하는 문단을 한 단위의 머리로 보고,
+ * 다음 머리가 나오기 전까지의 설명·코드 블록을 같은 단위로 묶습니다.
+ * 문단 첫 줄에서만 판정하므로, 문단 중간이나 끝에 오는 강조는 단위를 자르지 않습니다.
+ */
+const splitByBoldLead = (markdown: string) => {
+  const intro: string[] = [];
+  const steps: { title: string; body: string[] }[] = [];
+  let inFence = false;
+  let afterBlank = true;
+
+  markdown.split("\n").forEach((line) => {
+    if (/^```/.test(line)) inFence = !inFence;
+
+    const lead = !inFence && afterBlank ? STEP_LEAD.exec(line.trim()) : null;
+    afterBlank = line.trim() === "";
+
+    if (lead && !isPeriod(lead[1])) {
+      steps.push({ title: lead[1], body: lead[2] ? [lead[2]] : [] });
+      return;
+    }
+
+    const current = steps[steps.length - 1];
+    (current ? current.body : intro).push(line);
+  });
+
+  return {
+    intro: intro.join("\n").trim(),
+    steps: steps.map(({ title, body }) => ({ title, body: body.join("\n").trim() })),
+  };
+};
+
+/**
+ * @description 설명과 그에 딸린 코드가 한 덩어리로 읽히도록, 단위마다 구분선을 두고 제목을 세웁니다.
+ * 나눌 머리가 없는 마크다운은 그대로 렌더링합니다.
+ */
+const StepBody = ({ markdown }: { markdown: string }) => {
+  const { intro, steps } = splitByBoldLead(markdown);
+
+  if (steps.length === 0) return <MarkdownBody markdown={markdown} />;
+
+  return (
+    <>
+      {intro && <MarkdownBody markdown={intro} />}
+      {steps.map((step, index) => (
+        <div
+          key={`${index}-${step.title}`}
+          className={
+            index === 0 && !intro
+              ? ""
+              : "mt-8 pt-8 border-t-[1px] border-GRAY_LIGHT dark:border-GRAY_EXTRAHEAVY border-solid"
+          }
+        >
+          {/* 제목에도 인라인 코드가 들어가므로 마크다운으로 렌더하고, 굵기·크기는 상속시킵니다. */}
+          <div className="mb-2 text-base font-semibold">
+            <MarkdownBody markdown={step.title} />
+          </div>
+          <MarkdownBody markdown={step.body} />
+        </div>
+      ))}
+    </>
+  );
+};
+
 const WorkExperienceItem = ({ name, position, period, markdown, imgSrc }: WorkExperienceProps) => {
   const { intro, projects, flat } = splitWorkExperienceMarkdown(markdown ?? "");
 
@@ -127,7 +197,7 @@ const WorkExperienceItem = ({ name, position, period, markdown, imgSrc }: WorkEx
                   <div className="mt-4 flex flex-col gap-3">
                     {project.features.map((feature, featureIndex) => (
                       <Accordion key={`${featureIndex}-${feature.title}`} title={feature.title}>
-                        <MarkdownBody markdown={feature.body} />
+                        <StepBody markdown={feature.body} />
                       </Accordion>
                     ))}
                   </div>
@@ -142,7 +212,7 @@ const WorkExperienceItem = ({ name, position, period, markdown, imgSrc }: WorkEx
           <div className={`reveal flex flex-col gap-3 ${intro ? "mt-6" : ""}`}>
             {flat.sections.map((section, index) => (
               <Accordion key={`${index}-${section.title}`} title={section.title}>
-                <MarkdownBody markdown={section.body} />
+                <StepBody markdown={section.body} />
               </Accordion>
             ))}
           </div>
