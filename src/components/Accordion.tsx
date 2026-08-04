@@ -4,12 +4,24 @@ const Accordion = ({ title, children }: { title: string; children: React.ReactNo
   const [open, setOpen] = useState(false);
 
   return (
-    <div className="border-b-[1px] border-GRAY_LIGHT dark:border-GRAY_EXTRAHEAVY border-solid">
+    /**
+     * 다크 모드에서는 테두리(#495057)만으로 배경(#212529)과 구분이 약해,
+     * 카드 면에 옅은 배경을 깔아 경계를 만듭니다.
+     */
+    <div
+      className={`rounded-lg border-[1px] border-solid bg-white dark:bg-GRAY_EXTRAHEAVY/20 transition-colors ${
+        open
+          ? "border-GRAY dark:border-GRAY_HEAVY"
+          : "border-GRAY_LIGHT dark:border-GRAY_EXTRAHEAVY hover:border-GRAY dark:hover:border-GRAY_HEAVY"
+      }`}
+    >
       <button
         type="button"
         onClick={() => setOpen((prev) => !prev)}
         aria-expanded={open}
-        className="flex w-full items-center justify-between gap-4 py-4 text-left group"
+        className={`flex w-full items-center justify-between gap-4 px-5 py-4 text-left group border-solid ${
+          open ? "border-b-[1px] border-GRAY_LIGHT dark:border-GRAY_EXTRAHEAVY" : "border-b-0"
+        }`}
       >
         <span className="text-lg font-semibold group-hover:text-PRIMARY">{title}</span>
         <svg
@@ -28,7 +40,7 @@ const Accordion = ({ title, children }: { title: string; children: React.ReactNo
           <polyline points="6 9 12 15 18 9" />
         </svg>
       </button>
-      {open && <div className="pb-6">{children}</div>}
+      {open && <div className="px-5 pb-6 pt-2">{children}</div>}
     </div>
   );
 };

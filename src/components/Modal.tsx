@@ -44,7 +44,7 @@ const Modal = ({
         onClick={(event) => event.stopPropagation()}
       >
         <div className="sticky top-0 flex items-center justify-between border-b border-GRAY_LIGHT dark:border-GRAY_EXTRAHEAVY bg-white dark:bg-BLACK px-4 py-3">
-          {title && <span className="font-mono text-xs text-GRAY_HEAVY">{title}</span>}
+          {title && <span className="text-xs font-medium text-GRAY_HEAVY">{title}</span>}
           <button
             type="button"
             onClick={onClose}

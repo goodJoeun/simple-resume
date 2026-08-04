@@ -25,22 +25,61 @@ const CopyButton = ({ code }: { code: string }) => {
   );
 };
 
+/**
+ * @description 코드 펜스의 언어 id를 그대로 노출하면 `diff 코드 보기`처럼 어색하게 읽히므로,
+ * 사람이 읽는 이름으로 옮깁니다. 목록에 없는 언어는 id를 그대로 씁니다.
+ */
+const LABEL_BY_LANGUAGE: Record<string, string> = {
+  diff: "코드",
+  js: "JavaScript 코드",
+  jsx: "JavaScript 코드",
+  ts: "TypeScript 코드",
+  tsx: "TypeScript 코드",
+};
+
+const getLabel = (language?: string) => {
+  if (!language) return "코드";
+  return LABEL_BY_LANGUAGE[language] ?? `${language} 코드`;
+};
+
+const iconProps = {
+  xmlns: "http://www.w3.org/2000/svg",
+  viewBox: "0 0 24 24",
+  fill: "none",
+  stroke: "currentColor",
+  strokeWidth: "2",
+  strokeLinecap: "round",
+  strokeLinejoin: "round",
+  "aria-hidden": true,
+} as const;
+
 const CodeBlockPopup = ({ code, language }: { code: string; language?: string }) => {
   const [open, setOpen] = useState(false);
   const { resolvedTheme } = useTheme();
+
+  const label = getLabel(language);
 
   return (
     <>
       <button
         type="button"
         onClick={() => setOpen(true)}
-        className="my-2 flex items-center gap-2 rounded-md border border-GRAY_LIGHT dark:border-GRAY_EXTRAHEAVY bg-GRAY_LIGHT dark:bg-GRAY_EXTRAHEAVY px-3 py-2 text-xs font-mono text-GRAY_HEAVY hover:bg-GRAY hover:text-BLACK dark:hover:text-white"
+        className="group my-2 flex w-fit items-center gap-2 rounded-md border border-GRAY_LIGHT dark:border-GRAY_EXTRAHEAVY border-solid bg-white dark:bg-GRAY_EXTRAHEAVY/40 px-3 py-2 text-xs text-GRAY_HEAVY dark:text-GRAY transition-colors hover:border-GRAY hover:bg-GRAY_LIGHT hover:text-PRIMARY dark:hover:border-GRAY_HEAVY dark:hover:bg-GRAY_EXTRAHEAVY dark:hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-PRIMARY_LIGHT"
       >
-        <span aria-hidden>{"</>"}</span>
-        <span>{language ? `${language} 코드 보기` : "코드 보기"}</span>
+        <svg {...iconProps} className="w-3.5 h-3.5 shrink-0">
+          <polyline points="16 18 22 12 16 6" />
+          <polyline points="8 6 2 12 8 18" />
+        </svg>
+        <span className="font-medium">{label} 보기</span>
+        <svg
+          {...iconProps}
+          className="w-3.5 h-3.5 shrink-0 text-GRAY transition-transform group-hover:translate-x-0.5"
+        >
+          <polyline points="9 18 15 12 9 6" />
+        </svg>
       </button>
       {open && (
-        <Modal title={language} onClose={() => setOpen(false)}>
+        <Modal title={label} onClose={() => setOpen(false)}>
           <div className="relative -m-4 overflow-hidden rounded-b-lg">
             <SyntaxHighlighter
               language={language}
