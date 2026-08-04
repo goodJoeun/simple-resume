@@ -53,19 +53,22 @@ export const getStaticProps = async () => {
   const jsonData = await fsPromises.readFile(filePath, "utf8");
   const objectData = JSON.parse(jsonData);
 
+  // 동적 import()로 읽으면 .md가 별도 async 청크로 빠져 pages/index.js가 그대로라,
+  // dev에서 .md를 수정해도 브라우저에 리로드 신호가 가지 않는다.
+  // require.context는 페이지 청크에 인라인되므로 저장 즉시 자동 새로고침된다.
+  const markdownContext = require.context("../../public/markdown", true, /\.md$/);
+
   const informationWithData = getImgSrc({
     section: "information",
-    item: await getMd({ section: "information", item: { ...objectData.information } }),
+    item: getMd({ markdownContext, section: "information", item: { ...objectData.information } }),
   });
 
-  const workExperienceWithData = objectData.workExperience.map(
-    async (item: WorkExperienceProps) => {
-      return getImgSrc({
-        section: "workExperience",
-        item: await getMd({ section: "workExperience", item }),
-      });
-    },
-  );
+  const workExperienceWithData = objectData.workExperience.map((item: WorkExperienceProps) => {
+    return getImgSrc({
+      section: "workExperience",
+      item: getMd({ markdownContext, section: "workExperience", item }),
+    });
+  });
 
   return {
     props: {
@@ -76,22 +79,21 @@ export const getStaticProps = async () => {
   };
 };
 
-const getMd = async <T extends InformationProps | WorkExperienceProps>({
+const getMd = <T extends InformationProps | WorkExperienceProps>({
+  markdownContext,
   section,
   item,
 }: {
+  markdownContext: RequireContext;
   section: string;
   item: T;
 }) => {
-  try {
-    const markdownModule = await import(
-      `../../public/markdown/${section}/${"id" in item ? item.id : "introduce"}.md`
-    );
-    return { ...item, markdown: markdownModule.default as string };
-  } catch {
+  const key = `./${section}/${"id" in item ? item.id : "introduce"}.md`;
+  if (!markdownContext.keys().includes(key)) {
     console.log("no markdown");
     return item;
   }
+  return { ...item, markdown: markdownContext(key).default };
 };
 
 const getImgSrc = async ({
