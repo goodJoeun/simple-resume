@@ -9,10 +9,10 @@ const Accordion = ({ title, children }: { title: string; children: React.ReactNo
      * 카드 면에 옅은 배경을 깔아 경계를 만듭니다.
      */
     <div
-      className={`rounded-lg border-[1px] border-solid bg-white dark:bg-GRAY_EXTRAHEAVY/20 transition-colors ${
+      className={`w-full min-w-0 rounded-lg border-[1px] border-solid bg-white dark:bg-GRAY_EXTRAHEAVY/20 transition-colors ${
         open
-          ? "border-GRAY dark:border-GRAY_HEAVY"
-          : "border-GRAY_LIGHT dark:border-GRAY_EXTRAHEAVY hover:border-GRAY dark:hover:border-GRAY_HEAVY"
+          ? "border-GRAY_HEAVY"
+          : "border-GRAY dark:border-GRAY_EXTRAHEAVY hover:border-GRAY_HEAVY"
       }`}
     >
       <button
@@ -20,7 +20,7 @@ const Accordion = ({ title, children }: { title: string; children: React.ReactNo
         onClick={() => setOpen((prev) => !prev)}
         aria-expanded={open}
         className={`flex w-full items-center justify-between gap-4 px-5 py-4 text-left group border-solid ${
-          open ? "border-b-[1px] border-GRAY_LIGHT dark:border-GRAY_EXTRAHEAVY" : "border-b-0"
+          open ? "border-b-[1px] border-GRAY dark:border-GRAY_EXTRAHEAVY" : "border-b-0"
         }`}
       >
         <span className="text-lg font-semibold group-hover:text-PRIMARY">{title}</span>
@@ -40,7 +40,8 @@ const Accordion = ({ title, children }: { title: string; children: React.ReactNo
           <polyline points="6 9 12 15 18 9" />
         </svg>
       </button>
-      {open && <div className="px-5 pb-6 pt-2">{children}</div>}
+      {/* 펼친 내용이 카드보다 넓어도 카드를 밀어내지 않도록, 넘치는 만큼은 안에서 처리합니다. */}
+      {open && <div className="min-w-0 overflow-hidden px-5 pb-6 pt-2">{children}</div>}
     </div>
   );
 };

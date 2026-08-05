@@ -177,7 +177,11 @@ const WorkExperienceItem = ({ name, position, period, markdown, imgSrc }: WorkEx
           </div>
         </div>
       </div>
-      <div className="md:border-GRAY_LIGHT md:dark:border-GRAY_EXTRAHEAVY md:border-solid md:border-l-[1px] md:pl-4 markdown w-full">
+      {/*
+        flex 아이템의 기본값(min-width: auto)이면 안에 있는 코드 블록의 최소 너비만큼 칸이 넓어져,
+        아코디언을 펼칠 때마다 본문 폭이 흔들립니다. min-w-0 으로 폭을 부모 기준으로 고정합니다.
+      */}
+      <div className="md:border-GRAY_LIGHT md:dark:border-GRAY_EXTRAHEAVY md:border-solid md:border-l-[1px] md:pl-4 markdown w-full min-w-0">
         {intro && <MarkdownBody markdown={intro} />}
 
         {/* `###` 프로젝트 단위가 있는 경우: 프로젝트 제목·소개는 항상 보이고, 그 안의 `####` 기능만 각각 접힙니다. */}

@@ -51,7 +51,8 @@ const Highlighter = ({
   background?: string;
 }) => (
   <SyntaxHighlighter
-    language={language}
+    // 언어 없는 코드 펜스(```)도 있는데, undefined를 넘기면 Prism이 예외를 던지므로 평문으로 처리합니다.
+    language={language ?? "text"}
     style={vscDarkPlus}
     showLineNumbers={showLineNumbers}
     wrapLongLines={false}

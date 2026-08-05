@@ -48,8 +48,12 @@
     @apply bg-GRAY_LIGHT py-[2px] px-1.5 rounded-md text-xs font-medium text-PRIMARY_HEAVY dark:text-PRIMARY;
   }
 
+  /**
+   * 인용구는 어두운 면으로 둡니다. 안에 들어가는 코드·기술 스택 칩이 모두 밝은 색이라,
+   * 라이트 모드에서 배경이 밝으면 칩이 배경에 묻혀 납작해집니다.
+   */
   blockquote {
-    @apply bg-GRAY_LIGHT dark:bg-GRAY_EXTRAHEAVY py-4 px-6 my-2 rounded-md w-full;
+    @apply bg-BLACK text-GRAY_LIGHT dark:bg-GRAY_EXTRAHEAVY dark:text-white py-4 px-6 my-2 rounded-md w-full;
   }
 
   .markdown hr {
@@ -63,15 +67,6 @@
   .markdown th,
   .markdown td {
     @apply border border-GRAY_LIGHT dark:border-GRAY_EXTRAHEAVY px-3 py-2 text-left;
-  }
-
-  /* 기술 스택 아이콘은 브랜드 컬러를 쓰되, 검정 계열(Next.js 등)은 다크 모드에서 흰색으로 대체합니다. */
-  .tech-icon {
-    color: var(--tech-icon);
-  }
-
-  .dark .tech-icon {
-    color: var(--tech-icon-dark);
   }
 
   ul,
