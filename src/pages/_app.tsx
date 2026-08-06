@@ -9,12 +9,11 @@ import type { AppProps } from "next/app";
 const DEFAULT_SEO = {
   title: "조은 | Front-End Dev",
   description: "안녕하세요, 프론트엔드 개발자 조은입니다. 함께 유지할 수 있는 코드를 고민합니다.",
-  // TODO: 배포 후 실제 포트폴리오 주소로 변경해주세요.
-  canonical: "https://your-portfolio.vercel.app/",
+  canonical: "https://goodjoeun.vercel.app/",
   openGraph: {
     type: "website",
     locale: "ko_KR",
-    url: "https://your-portfolio.vercel.app/",
+    url: "https://goodjoeun.vercel.app/",
     title: "조은 | Front-End Dev",
     site_name: "조은 | Front-End Dev",
     images: [
