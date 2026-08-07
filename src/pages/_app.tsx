@@ -49,8 +49,9 @@ const DEFAULT_SEO = {
 };
 
 const App = ({ Component, pageProps }: AppProps) => {
+  // OS 설정을 따르지 않고 다크 모드로 시작합니다. 토글로 바꾼 선택은 localStorage에 남아 그대로 유지됩니다.
   return (
-    <ThemeProvider attribute="class">
+    <ThemeProvider attribute="class" defaultTheme="dark" enableSystem={false}>
       <DefaultSeo {...DEFAULT_SEO} />
       <Component {...pageProps} />
     </ThemeProvider>
